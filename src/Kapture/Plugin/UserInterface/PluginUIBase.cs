@@ -10,6 +10,7 @@ namespace Kapture
         public LootOverlayWindow LootOverlayWindow;
         public RollMonitorOverlayWindow RollMonitorOverlayWindow;
         public SettingsWindow SettingsWindow;
+        public LogOverlay LogOverlay;
 
         protected PluginUIBase(IKapturePlugin kapturePlugin)
         {
@@ -28,6 +29,7 @@ namespace Kapture
             LootOverlayWindow = new LootOverlayWindow(KapturePlugin);
             RollMonitorOverlayWindow = new RollMonitorOverlayWindow(KapturePlugin);
             SettingsWindow = new SettingsWindow(KapturePlugin);
+            LogOverlay = new LogOverlay(KapturePlugin);
         }
 
         private void SetWindowVisibility()
@@ -35,12 +37,14 @@ namespace Kapture
             LootOverlayWindow.IsVisible = KapturePlugin.Configuration.ShowLootOverlay;
             RollMonitorOverlayWindow.IsVisible = KapturePlugin.Configuration.ShowRollMonitorOverlay;
             SettingsWindow.IsVisible = false;
+            LogOverlay.IsVisible = false;
         }
 
         private void AddEventHandlers()
         {
             SettingsWindow.LootOverlayVisibilityUpdated += UpdateLootOverlayVisibility;
             SettingsWindow.RollMonitorOverlayVisibilityUpdated += UpdateRollMonitorOverlayVisibility;
+            SettingsWindow.LogOverlayVisibilityUpdated += UpdateLogOverlayVisibility;
         }
 
         private void UpdateLootOverlayVisibility(object sender, bool e)
@@ -53,11 +57,18 @@ namespace Kapture
             RollMonitorOverlayWindow.IsVisible = e;
         }
 
+        private void UpdateLogOverlayVisibility(object sender, bool e)
+        {
+            LogOverlay.IsVisible = e;
+            if (e == true) LogOverlay.ReadFile();
+        }
+
         public void Draw()
         {
             LootOverlayWindow.DrawView();
             RollMonitorOverlayWindow.DrawView();
             SettingsWindow.DrawView();
+            LogOverlay.DrawView();
         }
     }
 }

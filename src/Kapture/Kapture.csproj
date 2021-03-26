@@ -132,6 +132,7 @@
     <Compile Include="Plugin\Plugin.cs" />
     <Compile Include="Common\Localization\ILocalization.cs" />
     <Compile Include="Common\Localization\Localization.cs" />
+    <Compile Include="Plugin\UserInterface\Windows\LogOverlay.cs" />
     <Compile Include="Plugin\UserInterface\Windows\RollMonitorOverlay.cs" />
     <Compile Include="Service\LootLogger\LootLogger.cs" />
     <Compile Include="Service\LootProcessor\ENLootProcessor.cs" />

@@ -12,6 +12,7 @@ using System.Linq;
 using System.Numerics;
 using System.Timers;
 using CheapLoc;
+using DalamudPluginCommon;
 using Newtonsoft.Json;
 
 namespace Kapture.RollMonitor
