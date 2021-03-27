@@ -42,7 +42,7 @@ namespace Kapture
             ProcessLocalPlayerSynthesizeRegex = BuildRegex(@"制作“$");
             ProcessOtherPlayerSynthesizeRegex = BuildRegex(@"制作“$");
             RollRegex = BuildRegex(@"(?<Roll>\d{1,3})");
-            
+
             // cn-specific
             _processLocalPlayerSynthesizeRegex2 = BuildRegex(@"成功！$");
             _processOtherPlayerSynthesizeRegex2 = BuildRegex(@"成功！$");

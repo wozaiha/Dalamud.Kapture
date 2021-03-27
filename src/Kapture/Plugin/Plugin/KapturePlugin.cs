@@ -329,9 +329,10 @@ namespace Kapture
                     LootProcessor = new ENLootProcessor(this);
                     break;
             }
+
             LootLogger = new LootLogger(this);
         }
-        
+
         private void LoadUI()
         {
             Localization.SetLanguage(Configuration.PluginLanguage);

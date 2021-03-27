@@ -740,11 +740,11 @@ namespace Kapture
             }
 
             //log Overlay
-            
+
             if (pluginLogFormat == 1) //JSON
             {
                 ImGui.Spacing();
-                if (ImGui.Button("Showlog"))
+                if (ImGui.Button(Loc.Localize("OpenLogs", "Show Log")))
                 {
                     LogOverlayVisibilityUpdated?.Invoke(this, true);
                 }

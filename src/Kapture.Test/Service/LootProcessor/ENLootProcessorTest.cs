@@ -10,6 +10,7 @@ namespace Kapture.Test
     public class ENLootProcessorTest
     {
         private LootMessage _lootMessage;
+
         [SetUp]
         public void Setup()
         {
