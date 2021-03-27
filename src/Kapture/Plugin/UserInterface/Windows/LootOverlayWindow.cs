@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Numerics;
 using CheapLoc;
+using DalamudPluginCommon;
 using ImGuiNET;
 
 namespace Kapture
