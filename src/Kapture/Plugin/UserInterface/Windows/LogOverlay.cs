@@ -4,6 +4,7 @@ using System.Numerics;
 using CheapLoc;
 using ImGuiNET;
 using System.Collections.Generic;
+using System.Text;
 using Newtonsoft.Json;
 
 
@@ -55,6 +56,7 @@ namespace Kapture
                     while ((line = file.ReadLine()) != null)
                     {
                         var message = JsonConvert.DeserializeObject<LootEvent>(line);
+                        _plugin.LogInfo(message.PlayerName);
                         _lootEvent.Add(message);
                         var lootEventTypeName = message.LootEventTypeName;
                         if (!_filter.Contains(lootEventTypeName)) _filter.Add(lootEventTypeName);
@@ -102,7 +104,7 @@ namespace Kapture
                         ImGui.EndPopup();
                     }
 
-                    ImGui.TextColored(UIColor.Violet, Loc.Localize("LootTime", "时间"));
+                    ImGui.TextColored(UIColor.Violet, Loc.Localize("Time", "Time"));
                     ImGui.SameLine(col1);
                     ImGui.TextColored(UIColor.Violet, Loc.Localize("LootItemName", "Item"));
                     ImGui.SameLine(col2);
@@ -117,7 +119,7 @@ namespace Kapture
                     {
                         foreach (var loot in _lootEvent)
                         {
-                            //ImGui.BeginGroup();
+                            ImGui.BeginChild("Loot");
                             if (!Checkfilter(loot)) continue;
                             string time = DateTimeOffset.FromUnixTimeMilliseconds(loot.Timestamp).ToLocalTime()
                                 .ToString("yyyy-MM-dd HH:mm");
@@ -131,7 +133,7 @@ namespace Kapture
                             ImGui.Text(type);
                             ImGui.SameLine(col3);
                             ImGui.Text(loot.PlayerDisplayName);
-                            //ImGui.EndGroup();
+                            ImGui.EndChild();
                         }
                     }
                 }

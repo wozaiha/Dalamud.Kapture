@@ -164,7 +164,7 @@
         "description": "SettingsWindow.DrawEventTypes"
     },
     "CastEnabled": {
-        "message": "需/贪",
+        "message": "掷骰",
         "description": "SettingsWindow.DrawEventTypes"
     },
     "CraftEnabled": {
@@ -338,5 +338,9 @@
     "RollMonitorLost": {
         "message": "无人获得",
         "description": "RollMonitor.ProcessRoll"
+    },
+    "Time": {
+        "message": "时间",
+        "description": "LogViewer.LogTime"
     }
 }
