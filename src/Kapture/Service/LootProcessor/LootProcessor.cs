@@ -3,7 +3,6 @@
 // ReSharper disable UnusedParameter.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 
-using DalamudPluginCommon;
 using System;
 using System.Text.RegularExpressions;
 

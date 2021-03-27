@@ -2,7 +2,6 @@
 using System.IO;
 using System.Numerics;
 using CheapLoc;
-using DalamudPluginCommon;
 using ImGuiNET;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -89,7 +88,7 @@ namespace Kapture
                             ImGui.Text(item);
                             ImGui.SameLine(col2);
                             string type = Loc.Localize(loot.LootEventTypeName+ "Enabled", loot.LootEventTypeName);
-                            ImGui.Text(loot.LootEventTypeName);
+                            ImGui.Text(type);
                             ImGui.SameLine(col3);
                             ImGui.Text(loot.PlayerDisplayName);
                             //ImGui.EndGroup();
