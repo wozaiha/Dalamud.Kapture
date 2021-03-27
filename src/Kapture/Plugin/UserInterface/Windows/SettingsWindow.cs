@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using CheapLoc;
-using DalamudPluginCommon;
 using ImGuiNET;
 
 namespace Kapture
@@ -40,7 +39,6 @@ namespace Kapture
 
         public event EventHandler<bool> LootOverlayVisibilityUpdated;
         public event EventHandler<bool> RollMonitorOverlayVisibilityUpdated;
-        public event EventHandler<bool> LogOverlayVisibilityUpdated;
 
         public override void DrawView()
         {
@@ -738,17 +736,6 @@ namespace Kapture
                 _plugin.Configuration.LogFormat = pluginLogFormat;
                 _plugin.SaveConfig();
                 _plugin.LootLogger.SetLogFormat();
-            }
-
-            //log Overlay
-            
-            if (pluginLogFormat == 1) //JSON
-            {
-                ImGui.Spacing();
-                if (ImGui.Button("Showlog"))
-                {
-                    LogOverlayVisibilityUpdated?.Invoke(this, true);
-                }
             }
         }
 
