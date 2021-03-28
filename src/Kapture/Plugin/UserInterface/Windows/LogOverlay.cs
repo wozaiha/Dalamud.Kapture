@@ -12,14 +12,14 @@ namespace Kapture
 {
     public class LogOverlay : WindowBase
     {
-        const int eventnumber = 15;
+        const int filternumber = 14;
         private readonly IKapturePlugin _plugin;
         private float _uiScale;
         private readonly List<LootEvent> _lootEvent = new List<LootEvent>();
         private readonly object _fileLock = new object();
         private DateTime _lastwrite = DateTime.Now;
         private readonly List<string> _filter = new List<string>();
-        private bool[] check = new bool[eventnumber];
+        private bool[] check = new bool[filternumber];
 
         public LogOverlay(IKapturePlugin plugin)
         {
@@ -33,8 +33,6 @@ namespace Kapture
 
         public void ReadFile()
         {
-            //_plugin.LogInfo(read.ToString());
-
             lock (_fileLock)
             {
                 string path = Path.Combine(_plugin.DataManager.DataPath, LogFormat.GetFileName(LogFormat.JSON));
@@ -46,7 +44,7 @@ namespace Kapture
                     {
                         _lootEvent.Clear();
                         _filter.Clear();
-                        for (int i = 0; i < eventnumber; i++)
+                        for (int i = 0; i < filternumber; i++)
                         {
                             check[i] = true;
                         }
@@ -56,7 +54,6 @@ namespace Kapture
                     while ((line = file.ReadLine()) != null)
                     {
                         var message = JsonConvert.DeserializeObject<LootEvent>(line);
-                        _plugin.LogInfo(message.PlayerName);
                         _lootEvent.Add(message);
                         var lootEventTypeName = message.LootEventTypeName;
                         if (!_filter.Contains(lootEventTypeName)) _filter.Add(lootEventTypeName);
@@ -104,15 +101,15 @@ namespace Kapture
                         ImGui.EndPopup();
                     }
 
-                    ImGui.TextColored(UIColor.Violet, Loc.Localize("Time", "Time"));
-                    ImGui.SameLine(col1);
-                    ImGui.TextColored(UIColor.Violet, Loc.Localize("LootItemName", "Item"));
-                    ImGui.SameLine(col2);
                     ImGui.PushStyleColor(ImGuiCol.Text, UIColor.Violet);
+                    ImGui.Text(Loc.Localize("Time", "Time"));
+                    ImGui.SameLine(col1);
+                    ImGui.Text(Loc.Localize("LootItemName", "Item"));
+                    ImGui.SameLine(col2);
                     if (ImGui.Button(Loc.Localize("LootEventType", "Event"))) ImGui.OpenPopup("Event");
-                    ImGui.PopStyleColor();
                     ImGui.SameLine(col3);
-                    ImGui.TextColored(UIColor.Violet, Loc.Localize("LootPlayer", "Player"));
+                    ImGui.Text(Loc.Localize("LootPlayer", "Player"));
+                    ImGui.PopStyleColor();
                     ImGui.Separator();
 
                     lock (_fileLock)
