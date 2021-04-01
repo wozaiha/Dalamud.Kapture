@@ -114,6 +114,7 @@ namespace Kapture
 
                     lock (_fileLock)
                     {
+                        ImGui.BeginChild("Loot");
                         foreach (var loot in _lootEvent)
                         {
                             ImGui.BeginChild("Loot");
@@ -130,8 +131,8 @@ namespace Kapture
                             ImGui.Text(type);
                             ImGui.SameLine(col3);
                             ImGui.Text(loot.PlayerDisplayName);
-                            ImGui.EndChild();
                         }
+                        ImGui.EndChild();
                     }
                 }
 
