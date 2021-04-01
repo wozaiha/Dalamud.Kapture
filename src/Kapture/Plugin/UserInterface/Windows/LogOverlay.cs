@@ -117,7 +117,6 @@ namespace Kapture
                         ImGui.BeginChild("Loot");
                         foreach (var loot in _lootEvent)
                         {
-                            ImGui.BeginChild("Loot");
                             if (!Checkfilter(loot)) continue;
                             string time = DateTimeOffset.FromUnixTimeMilliseconds(loot.Timestamp).ToLocalTime()
                                 .ToString("yyyy-MM-dd HH:mm");
