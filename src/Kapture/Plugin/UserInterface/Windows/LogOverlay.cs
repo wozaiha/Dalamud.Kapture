@@ -100,7 +100,7 @@ namespace Kapture
 
                         ImGui.EndPopup();
                     }
-
+                    
                     ImGui.PushStyleColor(ImGuiCol.Text, UIColor.Violet);
                     ImGui.Text(Loc.Localize("Time", "Time"));
                     ImGui.SameLine(col1);
@@ -112,9 +112,9 @@ namespace Kapture
                     ImGui.PopStyleColor();
                     ImGui.Separator();
 
+                    ImGui.BeginChild("Logs");
                     lock (_fileLock)
                     {
-                        ImGui.BeginChild("Loot");
                         foreach (var loot in _lootEvent)
                         {
                             if (!Checkfilter(loot)) continue;
@@ -131,8 +131,8 @@ namespace Kapture
                             ImGui.SameLine(col3);
                             ImGui.Text(loot.PlayerDisplayName);
                         }
-                        ImGui.EndChild();
                     }
+                    ImGui.EndChild();
                 }
 
                 IsVisible = closeable;
