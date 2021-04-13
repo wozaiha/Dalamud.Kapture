@@ -78,15 +78,15 @@ namespace Kapture
         {
             if (!ShowOverlay()) return;
             _uiScale = ImGui.GetIO().FontGlobalScale;
-            ImGui.SetNextWindowSize(new Vector2(400 * _uiScale, 300 * _uiScale), ImGuiCond.FirstUseEver);
+            ImGui.SetNextWindowSize(new Vector2(450 * _uiScale, 300 * _uiScale), ImGuiCond.FirstUseEver);
             bool closeable = true;
             if (ImGui.Begin(Loc.Localize("LogOverlay", "Log"), ref closeable))
             {
                 if (_plugin.Configuration.Enabled)
                 {
                     var col1 = 120f * Scale;
-                    var col2 = 250f * Scale;
-                    var col3 = 300f * Scale;
+                    var col2 = 300f * Scale;
+                    var col3 = 350f * Scale;
 
                     //Event filter 
                     if (ImGui.BeginPopup("Event"))
